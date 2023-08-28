@@ -4,6 +4,7 @@ const threshold = 50;
 
 window.onload = function() {
     load();
+    video.play();
 };
 
 function load() {
@@ -14,7 +15,7 @@ function load() {
     video.addEventListener("loadedmetadata", function() {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
-        video.play();
+       
         requestAnimationFrame(effect);
     });
 }
