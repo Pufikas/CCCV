@@ -1,12 +1,22 @@
 <html>
     <head>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="effect.js"></script>
         <title>Effect</title>
-        <video id="video" src="footage.mp4" allow="autoplay" controls></video>
     </head>
     <body>
         <canvas id="mainCanvas"></canvas>
+        <video id="mainVideo" src="footage.mp4" allow="autoplay" controls></video>
+    
+    <script>
+   
+        mainVideo.src = "footage.mp4";
+        mainVideo.onloadeddata = function() {
+            mainCanvas.width = mainVideo.videoWidth;
+            mainCanvas.height = mainVideo.videoHeight;
+            new Effect(mainCanvas, mainVideo);
+        }    
+    </script>
     </body>
 </html>
 
