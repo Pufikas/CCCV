@@ -27,7 +27,7 @@ class Particle {
         ctx.beginPath();
         ctx.strokeStyle = `hsla(200, 100%, 50%, ${this.life * 0.10})`;
         ctx.lineWidth = 10;
-        ctx.arc(oldLoc.x, (oldLoc.y + 2), 17, 0, Math.PI * 2)
+        ctx.arc(oldLoc.x, (oldLoc.y + 2), 18, 0, Math.PI * 2)
         ctx.fillStyle = `hsla(200, 100%, 50%, 0.01)`
         ctx.fill();
         ctx.stroke();
