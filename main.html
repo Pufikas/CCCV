@@ -8,16 +8,30 @@
     </head>
     <body>
         <canvas id="mainCanvas"></canvas>
-        <video id="mainVideo" src="footage.mp4" allow="autoplay" controls></video>
+        <video id="mainVideo" src="footage.mp4" controls></video>
     
     <script>
    
-        mainVideo.src = "footage.mp4";
-        mainVideo.onloadeddata = function() {
-            mainCanvas.width = mainVideo.videoWidth;
-            mainCanvas.height = mainVideo.videoHeight;
-            new Effect(mainCanvas, mainVideo);
-        }    
+    const video = document.getElementById("mainVideo");
+    let isVideoPlaying = false;
+
+    video.addEventListener("play", function() {
+        isVideoPlaying = true;
+        console.log("playing")
+    });
+
+    video.addEventListener("pause", function() {
+        isVideoPlaying = false;
+        console.log("paused")
+    });
+
+       
+    mainVideo.onloadeddata = function() {
+        mainCanvas.width = mainVideo.videoWidth;
+        mainCanvas.height = mainVideo.videoHeight;
+        new Effect(mainCanvas, mainVideo);
+    }
+    
     </script>
     </body>
 </html>

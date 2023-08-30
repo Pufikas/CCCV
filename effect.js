@@ -11,25 +11,31 @@ class Effect {
         const { ctx, canvas, video } = this;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        console.log(imgData);
 
         const locs = getLocationWithColor(imgData, {r:0, g:0, b:255});
+    
+        
     // debug
-        ctx.fillStyle = "yellow";
-        locs.forEach(loc => {
-            ctx.fillRect(loc.x, loc.y, 1, 1);
-        })
-//
+        // ctx.fillStyle = "yellow";
+        // locs.forEach(loc => {
+        //     ctx.fillRect(loc.x, loc.y, 1, 1);
+        // })
+
         if (locs.length > 0) {
             const center = average(locs);
-            for (let i = 1; i <= 10; i++) {
+            for (let i = 1; i <= 42; i++) {
                 this.particles.push(new Particle(center));
             }
-        //
+
             ctx.beginPath();
-            ctx.fillStyle = "red";
-            ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
+            ctx.fillStyle = `hsla(200, 100%, 50%)`;
+            ctx.arc(center.x, center.y, 20, 0, Math.PI * 2);
             ctx.fill();
+    // center
+            // ctx.beginPath();
+            // ctx.fillStyle = "red";
+            // ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
+            // ctx.fill();
         }
 
         this.particles.forEach(p => {

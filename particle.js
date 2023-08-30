@@ -3,24 +3,21 @@ class Particle {
         this.x = location.x;
         this.y = location.y;
         const angle = Math.random() * Math.PI * 2;
-        const speed = lerp(4, 10, Math.random());
+        const speed = lerp(2, 2, Math.random());
         this.velocity = {
             x:Math.cos(angle) * speed,
             y:Math.sin(angle) * speed
         }
         this.life = 1;
-        this.hue = lerp(25, 50, Math.random());
+        this.hue = lerp(220, 100, 50);
         this.#move();
         this.#move();
-        this.#move();
-        this.#move();
-        
     }
 
     #move() {
         this.x += this.velocity.x;
         this.y += this.velocity.y;
-        this.life -= 0.05;
+        this.life -= 0.12;
     }
 
     update(ctx) {
@@ -28,12 +25,11 @@ class Particle {
         this.#move();
 
         ctx.beginPath();
-        ctx.strokeStyle = `hsla(${this.hue}, 100%, 50%, ${this.life})`;
-        ctx.lineWidth = 3;
-        ctx.moveTo(oldLoc.x, oldLoc.y);
-        ctx.lineTo(this.x, this.y);
+        ctx.strokeStyle = `hsla(200, 100%, 50%, ${this.life * 0.10})`;
+        ctx.lineWidth = 10;
+        ctx.arc(oldLoc.x, (oldLoc.y + 2), 17, 0, Math.PI * 2)
+        ctx.fillStyle = `hsla(200, 100%, 50%, 0.01)`
+        ctx.fill();
         ctx.stroke();
-        // ctx.arc(this.x, this.y, 5, 0, Math.PI*2);
-        // ctx.fill();
     }
 }
