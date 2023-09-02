@@ -38,10 +38,10 @@ class Effect {
             // ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
             // ctx.fill();
             function getLength() {
-                
+                const lengthDiv = document.getElementById("lengthDiv");
                 const point = [center.x, center.y - 20];
                 const distance = euclideanDistance([245, 5], point);
-                
+                lengthDiv.innerHTML = Math.floor(distance) + ("px");
                 console.log(distance)
                 ctx.strokeStyle = "gray";
                 //ctx.arc(245, 5, 1, 0, 1); // dot in the middle of screen
