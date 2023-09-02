@@ -30,12 +30,28 @@ class Effect {
             ctx.beginPath();
             ctx.fillStyle = `hsla(200, 100%, 50%)`;
             ctx.arc(center.x, center.y, 20, 0, Math.PI * 2);
+           
             ctx.fill();
     // center
             // ctx.beginPath();
             // ctx.fillStyle = "red";
             // ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
             // ctx.fill();
+            function getLength() {
+                
+                const point = [center.x, center.y - 20];
+                const distance = euclideanDistance([245, 5], point);
+                
+                console.log(distance)
+                ctx.strokeStyle = "gray";
+                //ctx.arc(245, 5, 1, 0, 1); // dot in the middle of screen
+        
+                ctx.lineWidth = 2;
+                ctx.moveTo(246, 5)
+                ctx.lineTo(center.x, (center.y - 20))
+                ctx.stroke();
+            }
+            getLength()
         }
 
         this.particles.forEach(p => {
