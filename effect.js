@@ -14,14 +14,19 @@ class Effect {
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
         const locs = getLocationWithColor(imgData, {r:0, g:0, b:255});
-    
-        
+
+        const lengthDiv = document.getElementById("lengthDiv");
+        const posX = document.getElementById("xPos");
+        const posY = document.getElementById("yPos");
+        const velocityDiv = document.getElementById("velocity");
+        const particleDiv = document.getElementById("particles");
     // debug
         // ctx.fillStyle = "yellow";
         // locs.forEach(loc => {
         //     ctx.fillRect(loc.x, loc.y, 1, 1);
         // })
 
+    
         if (locs.length > 0) {
             const center = average(locs);
             const vel = center.x - this.prevLoc.x;
@@ -42,7 +47,6 @@ class Effect {
             // ctx.fill();
 
             function getLength() {
-                const lengthDiv = document.getElementById("lengthDiv");
                 const distance = Math.sqrt(245 * 245 + 5 * 5);
                 let centimeters = distance / (96 / 2.54)
                 lengthDiv.innerHTML = "Length" + "\n" + Math.floor(centimeters) + "cm" + "/" + Math.floor(distance) + "px";
@@ -55,19 +59,17 @@ class Effect {
             }
 
             function centerDot() {
-                const posX = document.getElementById("xPos");
-                const posY = document.getElementById("yPos");
                 const center = average(locs);
-                posX.innerHTML = `Position x: ${center.x}`;
-                posY.innerHTML = `Position y: ${center.y}`;
+                posX.innerHTML = `Position x: ${Math.floor(center.x)}`;
+                posY.innerHTML = `Position y: ${Math.floor(center.y)}`;
             }
 
             function velocity() {
-                const velocityDiv = document.getElementById("velocity");
-                
-
-                velocityDiv.innerHTML = `Velocity: ${vel}`
+                velocityDiv.innerHTML = `Velocity: ${Math.floor(vel)}`
             }
+
+            const currentParticleCount = this.particles.length
+            particleDiv.innerHTML = `Particle Count: ${currentParticleCount}`;
 
             velocity();
             centerDot();
