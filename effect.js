@@ -16,7 +16,6 @@ class Effect {
         moreParticles.addEventListener("click", () => {
         this.particleCount += 0.9;
         this.ballSize += 0.2;
-        console.log("clicked")
     });
 }
 
@@ -27,7 +26,6 @@ class Effect {
 
         const locs = getLocationWithColor(imgData, {r:0, g:0, b:255});
        
-        const lengthDiv = document.getElementById("lengthDiv");
         const posX = document.getElementById("xPos");
         const posY = document.getElementById("yPos");
         const velocityDiv = document.getElementById("velocity");
@@ -53,23 +51,12 @@ class Effect {
             ctx.fillStyle = `hsla(200, 100%, 50%)`;
             ctx.arc(center.x, center.y, this.ballSize, 0, Math.PI * 2);
             ctx.fill();
-    // center
+
+    // debug
             // ctx.beginPath();
             // ctx.fillStyle = "red";
             // ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
             // ctx.fill();
-
-            function getLength() {
-                const distance = Math.sqrt(245 * 245 + 5 * 5);
-                let centimeters = distance / (96 / 2.54)
-                lengthDiv.innerHTML = "Length" + "\n" + Math.floor(centimeters) + "cm" + "/" + Math.floor(distance) + "px";
-                //console.log(distance)
-                ctx.strokeStyle = "gray";
-                ctx.lineWidth = 2;
-                ctx.moveTo(246, 5)
-                ctx.lineTo(center.x, (center.y - 20))
-                ctx.stroke();
-            }
 
             function centerDot() {
                 const center = average(locs);
@@ -86,7 +73,6 @@ class Effect {
 
             velocity();
             centerDot();
-            getLength();
         }
 
         this.particles.forEach(p => {
