@@ -51,12 +51,24 @@ class Effect {
             ctx.fillStyle = `hsla(200, 100%, 50%)`;
             ctx.arc(center.x, center.y, this.ballSize, 0, Math.PI * 2);
             ctx.fill();
-
+            
     // debug
             // ctx.beginPath();
             // ctx.fillStyle = "red";
             // ctx.arc(center.x, center.y, 5, 0, Math.PI * 2);
             // ctx.fill();
+
+            function getLength() {
+                const distance = Math.sqrt(center.y * center.y + 5 * 5);
+                // let centimeters = distance / (96 / 2.54)
+                lengthDiv.innerHTML = "Length " + Math.floor(distance) + "px";
+                
+                ctx.strokeStyle = "gray";
+                ctx.lineWidth = 2;
+                ctx.moveTo((center.y / 1.66), 5)
+                ctx.lineTo(center.x, (center.y - 20))
+                ctx.stroke();
+            }
 
             function centerDot() {
                 const center = average(locs);
@@ -73,6 +85,7 @@ class Effect {
 
             velocity();
             centerDot();
+            getLength();
         }
 
         this.particles.forEach(p => {

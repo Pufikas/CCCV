@@ -9,3 +9,12 @@ body {
 #mainVideo {
     border: 2px solid black;
 }
+
+#wrapper {
+    display: flex;
+    flex-direction: column
+}
+
+#moreParticles {
+    max-width: 200px;
+}
